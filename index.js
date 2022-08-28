@@ -1,8 +1,32 @@
-import { registerRootComponent } from 'expo';
+import React, { Component } from 'react';
+import { render, View, Text, StyleSheet } from 'react-native-web';
+import Hello from './hello';
 
-import App from './App';
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'React'
+    };
+  }
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+  render() {
+    return (
+      <View style={styles.container}>
+        <Hello name={this.state.name} />
+        <Text>
+          Start editing to see some magic happen :)
+        </Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+  }
+})
+
+render(<App />, document.getElementById('app'));
